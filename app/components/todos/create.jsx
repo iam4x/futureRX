@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
+import connect from 'core/connect'
 
+@connect('todos')
 class CreateTodo extends Component {
 
   props: {
-    onSubmit: Function
+    todos: {
+      push: Function
+    }
   }
 
   state = { title: '' }
@@ -17,8 +21,8 @@ class CreateTodo extends Component {
 
     // fire `onSubmit` with new Todo
     const { title } = this.state
-    const { onSubmit } = this.props
-    onSubmit({ title, id: Math.random(), finished: false })
+    const { todos } = this.props
+    todos.push({ title, id: Math.random(), finished: false })
 
     // reset title to empty string for next todo
     this.setState({ title: '' })

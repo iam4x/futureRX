@@ -1,24 +1,28 @@
 import React from 'react'
-import { observer } from 'mobx-react'
-
-import { toggle } from 'app/actions/todos'
+import connect from 'core/connect'
 
 type Props = {
   todo: {
     id: number,
     title: string,
     finished: boolean
-  }
+  },
+  onRemove: Function
 }
 
-const Todo = observer(({ todo }: Props) =>
+const Todo = ({ todo, onRemove }: Props) =>
   <li>
     { todo.title }
     <input
       type='checkbox'
       checked={ todo.finished }
-      onChange={ () => toggle(todo) } />
-  </li>
-)
+      onChange={ () => { todo.finished = !todo.finished } } />
 
-export default Todo
+    <button
+      type='button'
+      onClick={ () => onRemove(todo) }>
+      remove
+    </button>
+  </li>
+
+export default connect()(Todo)

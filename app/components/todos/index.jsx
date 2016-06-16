@@ -13,19 +13,21 @@ type Props = {
   }
 }
 
-const Todos = connect('todos')(({ todos }: Props) =>
+const Todos = ({ todos }: Props) =>
   <div>
     <ul className='app--todos'>
-      { todos.map((todo, idx) =>
-        <Todo key={ idx } todo={ todo } />) }
+      { todos.map(todo =>
+        <Todo
+          key={ todo.id }
+          todo={ todo }
+          onRemove={ () => todos.remove(todo) } />) }
     </ul>
 
-    <CreateTodo onSubmit={ (todo) => todos.push(todo) } />
+    <CreateTodo />
 
-    <Link to='/asdasd'>Nowhere</Link>
+    <Link to='/404'>404</Link>
   </div>
-)
 
 Todos.fetchData = load
 
-export default Todos
+export default connect('todos')(Todos)
