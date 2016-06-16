@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { observable } from 'mobx'
+
 import connect from 'core/connect'
 
 @connect('todos')
@@ -10,26 +12,26 @@ class CreateTodo extends Component {
     }
   }
 
-  state = { title: '' }
+  @observable title = ''
 
   handleChange = ({ target: { value } }) => {
-    this.setState({ title: value })
+    this.title = value
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
 
     // fire `onSubmit` with new Todo
-    const { title } = this.state
+    const { title } = this
     const { todos } = this.props
     todos.push({ title, id: Math.random(), finished: false })
 
     // reset title to empty string for next todo
-    this.setState({ title: '' })
+    this.title = ''
   }
 
   render() {
-    const { title } = this.state
+    const { title } = this
 
     return (
       <form
