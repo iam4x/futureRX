@@ -17,7 +17,3 @@ export const load = (store) => new Promise(resolve => {
 
   debug('dev')('end load todos')
 })
-
-export const toggle = (todo) => {
-  todo.finished = !todo.finished
-}
