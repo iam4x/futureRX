@@ -1,4 +1,5 @@
 import React from 'react'
+import DevTools from 'mobx-react-devtools'
 import { render } from 'react-dom'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-tunnel'
@@ -23,7 +24,7 @@ export default async ({ store, location, assets } = {}) => {
       whyDidYouUpdate(React)
     }
 
-    const App = () => (
+    const App = (
       <Provider provide={ { store } }>
         { () => <Router
           history={ browserHistory }
@@ -33,11 +34,20 @@ export default async ({ store, location, assets } = {}) => {
 
     const container = document.getElementById('app--container')
 
-    if (NODE_ENV !== 'development') return render(<App />, container)
+    if (NODE_ENV !== 'development') return render(App, container)
 
-    // special render, enable react-hot-loader
+    // special render in development:
+    // * enable react-hot-loader
+    // * enable mobx-react-devtools
     const { AppContainer } = require('react-hot-loader')
-    render(<AppContainer><App /></AppContainer>, container)
+    const Dev = (
+      <div>
+        <AppContainer key={ 0 }>{ App }</AppContainer>
+        <DevTools key={ 1 } position={ { bottom: 0, right: 20 } } />
+      </div>
+    )
+
+    render(Dev, container)
   } else {
     // server side rendering
     const ServerHTML = require('server/server-html')
