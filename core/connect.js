@@ -1,22 +1,19 @@
+import { isArray } from 'lodash'
 import { observer } from 'mobx-react'
 import { inject } from 'react-tunnel'
 
-export default (reducer) => (Component) => {
-  // * connect() -> return all stores
-  // * connect(fn) -> apply fn to stores object
-  // * connect('foo') -> provide 'foo' store as props
-  const injectStoresIntoProps = inject(({ stores }) => {
-    switch (typeof reducer) {
-    case 'function':
-      return reducer(stores)
-
-    case 'string':
-      return ({ [reducer]: stores[reducer] })
-
-    default:
-      return ({ stores })
-    }
-  })
+export default (request) => (Component) => {
+  // * connect('foo' || [ 'foo', 'bar' ]) -> provide storeKey data into props
+  //
+  // in 'foo' out ({ foo: store('foo') })
+  // in ['foo', 'bar'] out ({ foo: store('foo'), bar: store('bar') })
+  const injectStoresIntoProps = inject(({ store }) =>
+    (isArray(request) ? request : [ request ])
+      .reduce((props, storeKey) =>
+        ({ ...props, [storeKey]: store(storeKey) }),
+        {}
+    )
+  )
 
   // * observe decorated component by `mobx-react::observer`
   // * connect props from context onto decorated component

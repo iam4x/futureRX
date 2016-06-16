@@ -1,14 +1,15 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 
+import { toggle } from 'app/actions/todos'
+
 type Props = {
   todo: {
-    id: number;
-    title: string;
-    finished: boolean;
-    toggleState: Function;
-  };
-};
+    id: number,
+    title: string,
+    finished: boolean
+  }
+}
 
 const Todo = observer(({ todo }: Props) =>
   <li>
@@ -16,7 +17,7 @@ const Todo = observer(({ todo }: Props) =>
     <input
       type='checkbox'
       checked={ todo.finished }
-      onChange={ todo.toggleState } />
+      onChange={ () => toggle(todo) } />
   </li>
 )
 

@@ -6,7 +6,7 @@ import convert from 'koa-convert'
 import mount from 'koa-mount'
 import staticCache from 'koa-static-cache'
 
-import createStores from 'app/stores'
+import createStore from 'app/store'
 import render from 'core/universal-render'
 
 const { NODE_ENV } = process.env
@@ -30,7 +30,7 @@ app.use(async (ctx) => {
     ctx.status = 200
     ctx.body = await render({
       assets: require('./webpack-stats.json'),
-      stores: createStores(),
+      store: createStore(),
       location: ctx.request.url
     })
 

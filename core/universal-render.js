@@ -11,9 +11,9 @@ import { rehydrate, dehydrate } from './hydrate'
 
 const { NODE_ENV, BROWSER } = process.env
 
-export default async ({ stores, location, assets } = {}) => {
+export default async ({ store, location, assets } = {}) => {
   if (BROWSER) {
-    rehydrate(stores)
+    rehydrate(store)
 
     // track potentially unnecessary re-renders
     // if we find `debugRender` in the query string
@@ -24,7 +24,7 @@ export default async ({ stores, location, assets } = {}) => {
     }
 
     const App = () => (
-      <Provider provide={ { stores } }>
+      <Provider provide={ { store } }>
         { () => <Router
           history={ browserHistory }
           routes={ routes } /> }
@@ -50,11 +50,11 @@ export default async ({ stores, location, assets } = {}) => {
     const [ routerError, redirect, renderProps ] = await asyncMatch(location, routes)
     if (routerError || redirect) throw ({ error: routerError, redirect })
 
-    await fetchData(stores, renderProps)
-    const appState = dehydrate(stores)
+    await fetchData(store, renderProps)
+    const appState = dehydrate(store)
 
     const body = renderToString(
-      <Provider provide={ { stores } }>
+      <Provider provide={ { store } }>
         { () => <RouterContext { ...renderProps } /> }
       </Provider>
     )

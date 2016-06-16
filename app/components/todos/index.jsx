@@ -2,19 +2,20 @@ import React from 'react'
 import { Link } from 'react-router'
 
 import connect from 'core/connect'
+import { load } from 'app/actions/todos'
 
 import Todo from './todo'
 
 type Props = {
   todos: {
-    collection: {};
-  };
-};
+    map: Function
+  }
+}
 
-const Todos = connect('todos')(({ todos: { collection } }: Props) =>
+const Todos = connect('todos')(({ todos }: Props) =>
   <div>
     <ul className='app--todos'>
-      { collection.map((todo, idx) =>
+      { todos.map((todo, idx) =>
         <Todo key={ idx } todo={ todo } />) }
     </ul>
 
@@ -22,6 +23,6 @@ const Todos = connect('todos')(({ todos: { collection } }: Props) =>
   </div>
 )
 
-Todos.fetchData = async ({ todos }) => await todos.load()
+Todos.fetchData = load
 
 export default Todos

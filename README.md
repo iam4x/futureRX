@@ -12,6 +12,7 @@ This project aim frontend applications which are using an external API to work w
 
   * #### react
     * [mobx](https://github.com/mobxjs/mobx)
+    * [mobx-store](https://github.com/AriaFallah/mobx-store)
     * [react ^15](https://facebook.github.io/react/)
     * [react-router ^2.0.0](https://github.com/rackt/react-router)
     * [react-hot-loader ^3.0.0-beta](https://github.com/gaearon/react-hot-loader)

@@ -1,4 +1,8 @@
 {
   "presets": ["save"],
-  "plugins": ["typecheck", "react-hot-loader/babel"]
+  "plugins": [
+    "typecheck",
+    "react-hot-loader/babel",
+    "lodash"
+  ]
 }
