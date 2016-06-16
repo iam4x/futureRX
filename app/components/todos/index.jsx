@@ -5,6 +5,7 @@ import connect from 'core/connect'
 import { load } from 'app/actions/todos'
 
 import Todo from './todo'
+import CreateTodo from './create'
 
 type Props = {
   todos: {
@@ -18,6 +19,8 @@ const Todos = connect('todos')(({ todos }: Props) =>
       { todos.map((todo, idx) =>
         <Todo key={ idx } todo={ todo } />) }
     </ul>
+
+    <CreateTodo onSubmit={ (todo) => todos.push(todo) } />
 
     <Link to='/asdasd'>Nowhere</Link>
   </div>
