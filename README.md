@@ -1,6 +1,6 @@
 # ⚛ futureRX
 
-> The futuristic :rocket: stack to create universal React applications with MobX as state manager. With supporting async data fetching out of the box on server side rendering.
+> 🚀 The futuristic stack to create universal React applications with MobX as state manager. With supporting async data fetching out of the box on server side rendering.
 
 WARNING: This is a proof of concept running on bleeding edge libraries, it has not been running in production yet. If you do [contact me](http://twitter.com/iam4x).
 
