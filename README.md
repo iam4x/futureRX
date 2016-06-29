@@ -51,9 +51,9 @@ This project aim frontend applications which are using an external API to work w
 
 ### TODO
 
-* [ ] allow override of listening ports (config)
-* [ ] test with ava and airbnb-enzyme
+* [x] allow override of listening ports via config ([7e9ae4a](https://github.com/iam4x/futureRX/commit/7e9ae4ac73fdd562fed5d39dda9325b4541217af))
 * [ ] inline styles (with postcss-modules)
+* [ ] test with ava and airbnb-enzyme
 * [ ] webpack build config
 * [ ] production server optimization
 * [ ] refactor server code
