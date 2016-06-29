@@ -8,6 +8,7 @@ import staticCache from 'koa-static-cache'
 
 import createStore from 'app/store'
 import render from 'core/universal-render'
+import { PORT } from 'core/config'
 
 const { NODE_ENV } = process.env
 
@@ -16,7 +17,7 @@ const app = new Koa()
 // Proxy asset folder to webpack development server in development mode
 if (NODE_ENV === 'development') {
   const proxy = require('koa-proxy')({
-    host: 'http://0.0.0.0:3001',
+    host: `http://0.0.0.0:${PORT + 1}`,
     map: (filePath) => `assets/${filePath}`
   })
   app.use(convert(mount('/assets', proxy)))
@@ -52,8 +53,8 @@ app.use(async (ctx) => {
   }
 })
 
-app.listen(3000)
+app.listen(PORT)
 
 // Tell parent process koa-server is started
 if (process.send) process.send('online')
-debug('koa')('Application started on port 3000')
+debug('koa')('`koa-render-server` started on port %s', PORT)

@@ -4,6 +4,7 @@ import webpack from 'webpack'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 
 import writeStats from './run/utils/write-stats'
+import { PORT } from './core/config'
 
 import {
   JS_REGEX,
@@ -22,7 +23,7 @@ export default {
     app: [
       'babel-polyfill',
       'react-hot-loader/patch',
-      'webpack-hot-middleware/client?path=http://localhost:3001/__webpack_hmr',
+      `webpack-hot-middleware/client?path=http://localhost:${PORT + 1}/__webpack_hmr`,
       resolve('./app')
     ]
   },
@@ -49,8 +50,8 @@ export default {
   plugins: [
     new BrowserSyncPlugin({
       host: 'localhost',
-      port: 3002,
-      proxy: '0.0.0.0:3000'
+      port: PORT + 2,
+      proxy: `0.0.0.0:${PORT}`
     }, { reload: false }),
 
     new webpack.HotModuleReplacementPlugin(),

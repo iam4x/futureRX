@@ -4,14 +4,16 @@ import Koa from 'koa'
 import convert from 'koa-convert'
 import webpack from 'webpack'
 
+import { PORT } from '../../core/config'
+
 export default () => {
   const webpackServer = new Koa()
   const compiler = webpack(require('../../webpack.config.babel'))
 
   const config = {
-    port: 3001,
+    port: PORT + 1,
     options: {
-      publicPath: 'http://localhost:3001/assets/',
+      publicPath: `http://localhost:${PORT + 1}/assets/`,
       hot: true,
       stats: {
         assets: true,
