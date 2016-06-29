@@ -2,7 +2,7 @@ import { isFunction, isString, isArray } from 'lodash'
 import { observer } from 'mobx-react'
 import { inject } from 'react-tunnel'
 
-const nativeObjectMethods = Object.getOwnPropertyNames(() => undefined)
+const nativeObjectMethods = Object.getOwnPropertyNames(Function)
 
 // borrowed from `react-redux/connect`
 // https://github.com/rackt/react-redux/blob/master/src/components/connect.js#L17
