@@ -43,7 +43,7 @@ class CreateTodo extends Component {
           onChange={ this.handleChange } />
 
         <button disabled={ !(title && title.trim()) }>
-          add todo
+          <i className='glyphicon glyphicon-plus' />
         </button>
       </form>
     )

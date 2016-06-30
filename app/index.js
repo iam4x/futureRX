@@ -1,3 +1,6 @@
+// global defined styles
+import 'app/styles/global.css'
+
 import { after } from 'lodash'
 import { browserHistory, match } from 'react-router'
 
