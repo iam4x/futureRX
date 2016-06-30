@@ -8,6 +8,7 @@ import { Router, browserHistory, RouterContext, match } from 'react-router'
 import routes from 'app/routes'
 
 import fetchData from './fetch-data'
+import ProvideInsertCss from './provide-insert-css'
 import { rehydrate, dehydrate } from './hydrate'
 
 const { NODE_ENV, BROWSER } = process.env
@@ -24,11 +25,16 @@ export default async ({ store, location, assets } = {}) => {
       whyDidYouUpdate(React)
     }
 
+    const insertCss = (styles) => styles._insertCss()
+
     const App = (
       <Provider provide={ { store } }>
-        { () => <Router
-          history={ browserHistory }
-          routes={ routes } /> }
+        { () =>
+          <ProvideInsertCss insertCss={ insertCss }>
+            <Router
+              history={ browserHistory }
+              routes={ routes } />
+          </ProvideInsertCss> }
       </Provider>
     )
 
@@ -63,9 +69,15 @@ export default async ({ store, location, assets } = {}) => {
     await fetchData(store, renderProps)
     const appState = dehydrate(store)
 
+    const css = []
+    const insertCss = (styles) => css.push(styles._getCss())
+
     const body = renderToString(
-      <Provider provide={ { store } }>
-        { () => <RouterContext { ...renderProps } /> }
+      <Provider provide={ { store, insertCss } }>
+        { () =>
+          <ProvideInsertCss insertCss={ insertCss }>
+            <RouterContext { ...renderProps } />
+          </ProvideInsertCss> }
       </Provider>
     )
 
@@ -74,6 +86,7 @@ export default async ({ store, location, assets } = {}) => {
         locale='fr_FR'
         assets={ assets }
         body={ body }
+        css={ css.join('') }
         appState={ appState } />
     )
   }
