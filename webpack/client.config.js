@@ -3,6 +3,7 @@ import { once } from 'lodash'
 
 import webpack from 'webpack'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 import sharedConfig from './shared.config'
 import writeStats from '../run/utils/write-stats'
@@ -35,6 +36,8 @@ export default (afterBundle) => ({
   },
 
   plugins: [
+    new ExtractTextPlugin(`[name]-${BUILD_HASH}.css`),
+
     new BrowserSyncPlugin({
       host: 'localhost',
       port: PORT + 2,
