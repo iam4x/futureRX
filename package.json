@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^6.3.6",
     "axios": "^0.12.0",
     "babel-core": "^6.9.1",
     "babel-eslint": "^6.0.4",
@@ -19,6 +20,7 @@
     "babel-preset-save": "^1.1.5",
     "browser-sync": "^2.13.0",
     "browser-sync-webpack-plugin": "^1.0.3",
+    "css-loader": "^0.23.1",
     "debug": "^2.2.0",
     "eslint": "^2.12.0",
     "eslint-config-airbnb": "^9.0.1",
@@ -26,6 +28,7 @@
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.4.2",
     "eslint-plugin-react": "^5.1.1",
+    "isomorphic-style-loader": "^1.0.0",
     "json-loader": "^0.5.4",
     "json-stringify-safe": "^5.0.1",
     "koa": "^2.0.0",
@@ -40,15 +43,23 @@
     "mobx-react-devtools": "^4.2.0",
     "mobx-store": "^3.2.3",
     "node-watch": "^0.3.5",
+    "postcss": "^5.0.21",
+    "postcss-import": "^8.1.2",
+    "postcss-loader": "^0.9.1",
+    "precss": "^1.4.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-hot-loader": "^3.0.0-beta.2",
     "react-router": "^2.4.1",
     "react-tunnel": "^0.1.0",
-    "webpack": "^2.1.0-beta.13",
+    "source-map-support": "^0.4.1",
+    "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0",
+    "webpack-node-externals": "^1.2.0",
     "why-did-you-update": "0.0.8"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "open": "0.0.5"
+  }
 }
