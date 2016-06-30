@@ -1,4 +1,5 @@
 import React from 'react'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import { Link } from 'react-router'
 
 import connect from 'core/connect'
@@ -7,6 +8,8 @@ import { load } from 'app/actions/todos'
 import Todo from './todo'
 import CreateTodo from './create'
 
+import styles from './todos.css'
+
 type Props = {
   todos: {
     map: Function
@@ -14,7 +17,7 @@ type Props = {
 }
 
 const Todos = ({ todos }: Props) =>
-  <div>
+  <div className={ styles.root }>
     <ul className='app--todos'>
       { todos.map(todo =>
         <Todo
@@ -28,6 +31,7 @@ const Todos = ({ todos }: Props) =>
     <Link to='/404'>404</Link>
   </div>
 
-Todos.fetchData = load
-
-export default connect('todos')(Todos)
+export default Object.assign(
+  withStyles(styles)(connect('todos')(Todos)),
+  { fetchData: load }
+)
