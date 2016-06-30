@@ -7,5 +7,4 @@ type Props = {
 const App = ({ children }: Props) =>
   <div className='app'>{ children }</div>
 
-
 export default App
