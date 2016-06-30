@@ -22,9 +22,13 @@ This project aim frontend applications which are using an external API to work w
     * [css-modules](https://github.com/css-modules/css-modules) 🌟
     * [postcss ^5.0.21](https://github.com/postcss/postcss)
     * [postcss-import ^8.1.2](https://github.com/postcss/postcss-import)
+    * [postcss-url ^5.1.2](https://github.com/postcss/postcss-url)
     * [autoprefixer ^6.3.6](https://github.com/postcss/autoprefixer)
     * [precss ^1.4.0](https://github.com/jonathantneal/precss)
     * [isomorphic-style-loader ^1.0.0](https://github.com/kriasoft/isomorphic-style-loader)
+    * _Supports also global CSS for real world usage with:_
+        * [extract-text-webpack-plugin ^1.0.1](https://github.com/webpack/extract-text-webpack-plugin)
+        * [style-loader ^0.13](https://github.com/webpack/style-loader)
 
   * #### server side rendering
     * [koa ^2.0.0](http://koajs.com/)
