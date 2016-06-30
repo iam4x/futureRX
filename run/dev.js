@@ -10,4 +10,4 @@ const startWebpackServer = require('./utils/start-webpack-server')
 
 debug.enable('dev,koa')
 
-startRenderServer(startWebpackServer)
+startWebpackServer(startRenderServer)

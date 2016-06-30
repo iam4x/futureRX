@@ -1,9 +1,9 @@
 // borrowed from https://github.com/gpbl/isomorphic500/blob/master/webpack%2Futils%2Fwrite-stats.js
 import fs from 'fs'
-import path from 'path'
 import debug from 'debug'
+import { extname, resolve } from 'path'
 
-const filepath = path.resolve('./server/webpack-stats.json')
+const filepath = resolve(__dirname, '../../server/webpack-stats.json')
 
 function writeStats(stats) {
   const publicPath = this.options.output.publicPath
@@ -19,7 +19,7 @@ function writeStats(stats) {
     }
 
     return chunks
-      .filter(chunk => ext.test(path.extname(chunk))) // filter by extension
+      .filter(chunk => ext.test(extname(chunk))) // filter by extension
       .map(chunk => `${publicPath}${chunk}`) // add public path to it
   }
 
