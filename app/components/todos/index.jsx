@@ -8,7 +8,7 @@ import { load } from 'app/actions/todos'
 import Todo from './todo'
 import CreateTodo from './create'
 
-import styles from './todos.css'
+import styles from 'app/styles/todos.css'
 
 type Props = {
   todos: {
