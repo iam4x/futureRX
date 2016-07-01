@@ -2,6 +2,9 @@
 
 > 🚀 The futuristic stack to create universal React applications with MobX as state manager. With supporting async data fetching out of the box on server side rendering.
 
+[![dependencies](https://david-dm.org/iam4x/futureRX.svg)](https://david-dm.org/iam4x/futureRX#info=dependencies&view=table)
+[![devDependencies](https://david-dm.org/iam4x/futureRX/dev-status.svg)](https://david-dm.org/iam4x/futureRX#info=devDependencies&view=table)
+
 WARNING: This is a proof of concept running on bleeding edge libraries, it has not been running in production yet. If you do [contact me](http://twitter.com/iam4x).
 
 This project aim frontend applications which are using an external API to work with data. This boilerplate does not include an API with it to fetch/persist data.
