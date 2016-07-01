@@ -1,0 +1,7 @@
+.github {
+  padding-top: 12px;
+
+  iframe:first-child {
+    margin-right: 15px;
+  }
+}

@@ -14,7 +14,7 @@ const ServerHTML = ({ assets, locale, body, appState, css }: Props) => (
       <meta charSet='utf-8' />
       <link rel='icon' type='image/ico' href='/favicon.ico' />
 
-      { /* Styles */ }
+      { /* Global bundled styles */ }
       { assets.style.map((href, idx) =>
         <link key={ idx } rel='stylesheet' href={ href } />) }
 
@@ -26,8 +26,16 @@ const ServerHTML = ({ assets, locale, body, appState, css }: Props) => (
     <body>
       <div id='app--container' dangerouslySetInnerHTML={ { __html: body } } />
 
+      { /* bundled js + app state */ }
       <script dangerouslySetInnerHTML={ { __html: `window.__appState__ = ${appState}` } } />
       <script src={ assets.script[0] } />
+
+      { /* external js */ }
+      <script
+        async={ true }
+        defer={ true }
+        id='github-bjs'
+        src='https://buttons.github.io/buttons.js' />
     </body>
   </html>
 )
