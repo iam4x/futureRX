@@ -1,3 +1,38 @@
-.root {
-  border: 1px solid #000;
+.todosContainer {
+  background-color: #FFF;
+  margin-top: 20px;
+  padding: 20px;
+  width: 100%;
+}
+
+.todosList {
+  border-top: 1px solid #EAEAEA;
+  padding-top: 20px;
+  padding-left: 0;
+  list-style-type: none;
+  vertical-align: middle;
+
+  li {
+    border-bottom: 1px solid #EAEAEA;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    width: 100%;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    input[type='checkbox'] {
+      margin-right: 10px;
+    }
+  }
+}
+
+.pendingTodo {
+  cursor: pointer;
+}
+
+.finishedTodo {
+  cursor: default;
+  text-decoration: line-through;
 }

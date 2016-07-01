@@ -5,6 +5,6 @@ type Props = {
 }
 
 const App = ({ children }: Props) =>
-  <div className='app'>{ children }</div>
+  <div className='container'>{ children }</div>
 
 export default App

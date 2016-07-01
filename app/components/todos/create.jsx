@@ -21,13 +21,16 @@ class CreateTodo extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    // fire `onSubmit` with new Todo
     const { title } = this
     const { todos } = this.props
-    todos.push({ title, id: Math.random(), finished: false })
 
-    // reset title to empty string for next todo
-    this.title = ''
+    if (title && title.trim()) {
+      // fire `onSubmit` with new Todo
+      todos.push({ title, id: Math.random(), finished: false })
+
+      // reset title to empty string for next todo
+      this.title = ''
+    }
   }
 
   render() {
@@ -40,11 +43,9 @@ class CreateTodo extends Component {
         <input
           type='text'
           value={ title }
-          onChange={ this.handleChange } />
-
-        <button disabled={ !(title && title.trim()) }>
-          <i className='glyphicon glyphicon-plus' />
-        </button>
+          className='form-control'
+          onChange={ this.handleChange }
+          placeholder='Add todo' />
       </form>
     )
   }
