@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint . --ext .jsx,.js",
     "dev": "node run/dev"
   },
   "author": "",
