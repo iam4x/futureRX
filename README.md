@@ -37,7 +37,7 @@ This project aim frontend applications which are using an external API to work w
     * [koa ^2.0.0](http://koajs.com/)
 
   * #### tools
-    * [webpack ^1.13](http://webpack.github.io/)
+    * [webpack ^2.1.0-beta.15](http://webpack.github.io/)
     * [webpack-hot-middleware](https://github.com/glenjamin/webpack-hot-middleware)
     * [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware)
     * [babeljs ^6.9](https://babeljs.io/)
