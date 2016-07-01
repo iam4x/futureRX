@@ -65,6 +65,6 @@ const startServer = () => {
   })
 }
 
-process.on('exit', () => server.kill('SIGTERM'))
+process.on('exit', () => server ? server.kill('SIGTERM') : undefined)
 
 export default startServer
