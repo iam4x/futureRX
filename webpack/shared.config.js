@@ -1,6 +1,5 @@
 /* eslint max-len: 0 */
 import { resolve } from 'path'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 import {
   JS_REGEX,
@@ -38,7 +37,7 @@ export default {
       },
       {
         test: /global\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
+        loader: 'style!css!postcss'
       }
     ]
   },
@@ -51,8 +50,7 @@ export default {
   ],
 
   resolve: {
-    root: resolve('./'),
-    modulesDirectories: [ resolve('node_modules') ],
-    extensions: [ '', '.js', '.json', '.jsx' ]
+    extensions: [ '', '.js', '.json', '.jsx' ],
+    modules: [ resolve('./'), 'node_modules' ]
   }
 }

@@ -3,11 +3,10 @@ import { once } from 'lodash'
 
 import webpack from 'webpack'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 import sharedConfig from './shared.config'
 import writeStats from '../run/utils/write-stats'
-import { CLIENT_GLOBALS, isDev } from '../constants'
+import { CLIENT_GLOBALS } from '../constants'
 import { PORT } from '../core/config'
 
 const { BUILD_HASH = 'DEFAULT' } = process.env
@@ -15,28 +14,30 @@ const { BUILD_HASH = 'DEFAULT' } = process.env
 export default (afterBundle) => ({
   ...sharedConfig,
 
-  debug: true,
   devtool: 'eval',
-  target: 'web',
 
   entry: {
     app: [
       'babel-polyfill',
       'react-hot-loader/patch',
       `webpack-hot-middleware/client?path=http://localhost:${PORT + 1}/__webpack_hmr`,
-      resolve(__dirname, '../app')
+      resolve('./app')
     ]
   },
 
   output: {
-    path: isDev ? resolve('./') : resolve('./dist'),
+    path: resolve('./dist'),
     filename: `[name]-${BUILD_HASH}.js`,
     chunkFilename: `[name]-${BUILD_HASH}.js`,
-    publicPath: '/assets/'
+    publicPath: '/assets/',
+    pathinfo: true
   },
 
   plugins: [
-    new ExtractTextPlugin(`[name]-${BUILD_HASH}.css`),
+    new webpack.LoaderOptionsPlugin({
+      minimize: false,
+      debug: true
+    }),
 
     new BrowserSyncPlugin({
       host: 'localhost',
