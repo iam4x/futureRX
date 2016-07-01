@@ -1,11 +1,16 @@
+import { filter } from 'lodash'
+
 import React from 'react'
-import { Link } from 'react-router'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
 
 import connect from 'core/connect'
 import { load } from 'app/actions/todos'
 
-import Todo from './todo'
+import FinishedTodo from './finished-todo'
+import PendingTodo from './pending-todo'
 import CreateTodo from './create'
+
+import styles from 'app/styles/todos.css'
 
 type Props = {
   todos: {
@@ -14,20 +19,41 @@ type Props = {
 }
 
 const Todos = ({ todos }: Props) =>
-  <div>
-    <ul className='app--todos'>
-      { todos.map(todo =>
-        <Todo
-          key={ todo.id }
-          todo={ todo }
-          onRemove={ () => todos.remove(todo) } />) }
-    </ul>
+  <div className='row'>
+    { /* unfinished todos */ }
+    <div className='col-sm-6'>
+      <div className={ styles.todosContainer }>
+        <h1 className='text-center'>Todos</h1>
 
-    <CreateTodo />
+        <CreateTodo />
 
-    <Link to='/404'>404</Link>
+        <ul className={ styles.todosList }>
+          { filter(todos, { finished: false }).map(todo =>
+            <PendingTodo
+              key={ todo.id }
+              todo={ todo } />) }
+        </ul>
+      </div>
+    </div>
+
+    { /* finished todos */ }
+    <div className='col-sm-6'>
+      <div className={ styles.todosContainer }>
+        <h1 className='text-center'>Already done</h1>
+
+        <ul className={ styles.todosList }>
+          { filter(todos, { finished: true }).map(todo =>
+            <FinishedTodo
+              key={ todo.id }
+              todo={ todo }
+              onRemove={ () => todos.remove(todo) } />) }
+        </ul>
+      </div>
+    </div>
   </div>
 
-Todos.fetchData = load
 
-export default connect('todos')(Todos)
+export default Object.assign(
+  withStyles(styles)(connect('todos')(Todos)),
+  { fetchData: load }
+)

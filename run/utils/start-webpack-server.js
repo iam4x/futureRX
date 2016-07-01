@@ -4,11 +4,13 @@ import Koa from 'koa'
 import convert from 'koa-convert'
 import webpack from 'webpack'
 
+import clientConfig from '../../webpack/client.config'
 import { PORT } from '../../core/config'
 
-export default () => {
+export default (afterBundle) => {
   const webpackServer = new Koa()
-  const compiler = webpack(require('../../webpack.config.babel'))
+  const webpackClientConfig = clientConfig(afterBundle)
+  const compiler = webpack(webpackClientConfig)
 
   const config = {
     port: PORT + 1,

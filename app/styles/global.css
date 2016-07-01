@@ -1,0 +1,13 @@
+/* PUT YOUR GLOBAL SCOPE CSS HERE, it should only be external CSS */
+@import 'normalize.css/normalize';
+@import 'bootstrap/dist/css/bootstrap';
+
+html,
+body {
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  background: #EEE;
+}

@@ -18,11 +18,23 @@ This project aim frontend applications which are using an external API to work w
     * [react-hot-loader ^3.0.0-beta](https://github.com/gaearon/react-hot-loader)
     * [why-did-you-update](https://github.com/garbles/why-did-you-update)
 
+  * #### css styles
+    * [css-modules](https://github.com/css-modules/css-modules) 🌟
+    * [postcss ^5.0.21](https://github.com/postcss/postcss)
+    * [postcss-import ^8.1.2](https://github.com/postcss/postcss-import)
+    * [postcss-url ^5.1.2](https://github.com/postcss/postcss-url)
+    * [autoprefixer ^6.3.6](https://github.com/postcss/autoprefixer)
+    * [precss ^1.4.0](https://github.com/jonathantneal/precss)
+    * [isomorphic-style-loader ^1.0.0](https://github.com/kriasoft/isomorphic-style-loader)
+    * _Supports also global CSS for real world usage with:_
+        * [extract-text-webpack-plugin ^1.0.1](https://github.com/webpack/extract-text-webpack-plugin)
+        * [style-loader ^0.13](https://github.com/webpack/style-loader)
+
   * #### server side rendering
     * [koa ^2.0.0](http://koajs.com/)
 
   * #### tools
-    * [webpack ^2.1.0-beta](http://webpack.github.io/)
+    * [webpack ^1.13](http://webpack.github.io/)
     * [webpack-hot-middleware](https://github.com/glenjamin/webpack-hot-middleware)
     * [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware)
     * [babeljs ^6.9](https://babeljs.io/)
@@ -52,7 +64,7 @@ This project aim frontend applications which are using an external API to work w
 ### TODO
 
 * [x] allow override of listening ports via config ([7e9ae4a](https://github.com/iam4x/futureRX/commit/7e9ae4ac73fdd562fed5d39dda9325b4541217af))
-* [ ] inline styles (with postcss-modules)
+* [x] inline styles (with css-modules)
 * [ ] test with ava and airbnb-enzyme
 * [ ] webpack build config
 * [ ] production server optimization
