@@ -9,7 +9,8 @@ export default {
   target: 'node',
 
   externals: [
-    require('webpack-node-externals')()
+    require('webpack-node-externals')(),
+    './webpack-stats.json'
   ],
 
   entry: {

@@ -37,7 +37,7 @@ app.use(async (ctx) => {
 
     // Don't cache assets name on dev
     if (NODE_ENV === 'development') {
-      delete require.cache[require.resolve('../server/webpack-stats.json')]
+      delete require.cache[require.resolve('./webpack-stats.json')]
     }
   } catch (err) {
     // Render 500 error page from server
