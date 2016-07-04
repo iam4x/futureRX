@@ -5,10 +5,21 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --ext .jsx,.js",
-    "dev": "node run/dev"
+    "dev": "node run/dev",
+    "test": "CONFIG=$(pwd)/webpack/test.config.babel.js BABEL_DISABLE_CACHE=1 NODE_ENV=test ava spec/**/*.spec.js"
   },
   "author": "iam4x",
   "license": "ISC",
+  "ava": {
+    "babel": "inherit",
+    "failFast": true,
+    "verbose": true,
+    "require": [
+      "./spec/helpers/setup-browser-env",
+      "babel-register",
+      "babel-polyfill"
+    ]
+  },
   "dependencies": {
     "autoprefixer": "^6.3.6",
     "axios": "^0.12.0",
@@ -61,13 +72,24 @@
     "webpack-node-externals": "^1.2.0"
   },
   "devDependencies": {
+    "ava": "^0.15.2",
+    "babel-plugin-resolver": "0.0.7",
+    "babel-plugin-webpack-loaders": "^0.7.0",
     "browser-sync": "^2.13.0",
     "browser-sync-webpack-plugin": "^1.0.3",
+    "chai": "^3.5.0",
+    "chai-enzyme": "^0.5.0",
+    "enzyme": "^2.3.0",
+    "faux-jax": "^5.0.1",
+    "jsdom": "^9.4.0",
     "koa-webpack-dev-middleware": "^1.2.1",
     "koa-webpack-hot-middleware": "^1.0.3",
     "mobx-react-devtools": "^4.2.0",
     "node-watch": "^0.3.5",
+    "nyc": "^6.6.1",
     "open": "0.0.5",
+    "sinon": "^1.17.4",
+    "sinon-chai": "^2.8.0",
     "source-map-support": "^0.4.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0",
