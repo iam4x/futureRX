@@ -1,5 +1,5 @@
 import { resolve } from 'path'
-import { execSync, fork } from 'child_process'
+import { exec, fork } from 'child_process'
 
 import debug from 'debug'
 import open from 'open'
@@ -14,13 +14,17 @@ let server = null
 let serverReload = false
 let firstServerStart = true
 
-const startServer = () => {
+const asyncExec = (cmd, opts) => new Promise(r =>
+  exec(cmd, opts, (e) => { if (e) { throw e } else { r() } }).stdout.pipe(process.stdout))
+
+const startServer = async () => {
   const env = { ...process.env, DEBUG: 'dev,koa', BABEL_ENV: 'server' }
 
   // compile first the server code,
   // it will be re-compiled at every server restart
   const webpackServerConfig = resolve(__dirname, '../../webpack/server.config.babel.js')
-  execSync(`webpack --config ${webpackServerConfig}`, { env, encoding: 'utf8' })
+  await asyncExec(`webpack --config ${webpackServerConfig}`, { env, encoding: 'utf8' })
+
   debug('dev')('compiled server code updated')
 
   // define `restartServer` function
