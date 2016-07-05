@@ -1,4 +1,5 @@
 export default {
+  devtool: 'inline-source-map',
   module: {
     loaders: [
       { test: /\.json$/, loader: 'json' },

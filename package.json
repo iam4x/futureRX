@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint . --ext .jsx,.js",
     "dev": "node run/dev",
-    "test": "CONFIG=$(pwd)/webpack/test.config.babel.js BABEL_DISABLE_CACHE=1 NODE_ENV=test ava spec/**/*.spec.js"
+    "test": "CONFIG=$(pwd)/webpack/test.config.babel.js BABEL_DISABLE_CACHE=1 NODE_ENV=test ava spec/**/*.spec.js",
+    "coverage": "nyc npm test"
   },
   "author": "iam4x",
   "license": "ISC",
@@ -18,6 +19,18 @@
       "./spec/helpers/setup-browser-env",
       "babel-register",
       "babel-polyfill"
+    ]
+  },
+  "nyc": {
+    "extension": [
+      ".jsx",
+      ".js"
+    ],
+    "exclude": [
+      "spec/",
+      "webpack/",
+      "node_modules/",
+      "dist/"
     ]
   },
   "dependencies": {
