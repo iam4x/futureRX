@@ -7,8 +7,7 @@ import { Provider } from 'react-tunnel'
 import createStore from 'app/store'
 import ProvideInsertCss from 'core/provide-insert-css'
 
-export default (Component, props = {}) => {
-  const store = createStore()
+export default (Component, props = {}, store = createStore()) => {
   const wrapper = mount(
     <Provider provide={ { store } }>
       { () =>
