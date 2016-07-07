@@ -20,7 +20,7 @@ export default (params) => (Component) => {
 
     if (isArray(params)) {
       return params.reduce((result, storeKey) =>
-        ({ ...result, [storeKey]: store(storeKey) }))
+        ({ ...result, [storeKey]: store(storeKey) }), {})
     }
 
     return ({ store })
