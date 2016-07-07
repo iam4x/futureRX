@@ -4,3 +4,6 @@ machine:
 dependencies:
   pre:
     - npm set progress=false
+test:
+  post:
+    - npm run coverage

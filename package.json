@@ -6,8 +6,9 @@
   "scripts": {
     "lint": "eslint . --ext .jsx,.js",
     "dev": "node run/dev",
-    "test": "CONFIG=$(pwd)/webpack/test.config.babel.js BABEL_DISABLE_CACHE=1 NODE_ENV=test ava spec/**/*.spec.js",
-    "coverage": "nyc npm test"
+    "ava": "CONFIG=$(pwd)/webpack/test.config.babel.js BABEL_DISABLE_CACHE=1 NODE_ENV=test ava spec/**/*.spec.js",
+    "test": "nyc npm run ava",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t 8bba035a-a292-4daa-b6d4-68acc439495f"
   },
   "author": "iam4x",
   "license": "ISC",
@@ -92,6 +93,7 @@
     "browser-sync-webpack-plugin": "^1.0.3",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.5.0",
+    "codecov": "^1.0.1",
     "enzyme": "^2.3.0",
     "faux-jax": "^5.0.1",
     "jsdom": "^9.4.0",
