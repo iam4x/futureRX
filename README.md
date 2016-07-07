@@ -44,7 +44,7 @@ This project aim frontend applications which are using an external API to work w
     * [faux-jax ^5.0.1](https://github.com/algolia/faux-jax)
     * [sinon ^1.17.4](https://github.com/sinonjs/sinon)
     * [sinon-chai ^2.8.0](https://github.com/domenic/sinon-chai)
-    * [nyc ^6.6.1](https://github.com/bcoe/nyc)
+    * [nyc ^7.0.0-alpha.5](https://github.com/bcoe/nyc)
 
   * #### dev/building tools
     * [webpack ^2.1.0-beta.15](http://webpack.github.io/)
