@@ -35,7 +35,7 @@ const startServer = async () => {
     startServer()
   }
 
-  server = fork(resolve(__dirname, '../../server/build.js'), { env })
+  server = fork(resolve(__dirname, '../../dist/server.js'), { env })
 
   server.once('message', (message) => {
     if (message.match(/^online$/)) {
@@ -60,11 +60,7 @@ const startServer = async () => {
       })
 
       // watch for `./server` changes and auto-reload server & browser
-      const excludedFiles = [ 'webpack-stats.json', 'build.js' ]
-      watch(
-        resolve(__dirname, '../../server'),
-        (file) => !excludedFiles.some((excluded) => file.match(excluded)) ? restartServer() : noop()
-      )
+      watch(resolve(__dirname, '../../server'))
     }
   })
 }

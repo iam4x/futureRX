@@ -3,7 +3,7 @@ import fs from 'fs'
 import debug from 'debug'
 import { extname, resolve } from 'path'
 
-const filepath = resolve(__dirname, '../../server/webpack-stats.json')
+const filepath = resolve(__dirname, '../../dist/webpack-stats.json')
 
 function writeStats(stats) {
   const publicPath = this.options.output.publicPath

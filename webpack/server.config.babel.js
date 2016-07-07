@@ -1,12 +1,17 @@
-import { resolve } from 'path'
+import path from 'path'
 import webpack from 'webpack'
 
-import sharedConfig from './shared.config'
+const {
+  resolve,
+  postcss,
+  module: { loaders }
+} = require('./shared.config')
+
+const { NODE_ENV = 'development' } = process.env
 
 export default {
-  ...sharedConfig,
-
   target: 'node',
+  devtool: 'source-map',
 
   externals: [
     require('webpack-node-externals')(),
@@ -16,30 +21,43 @@ export default {
   entry: {
     app: [
       'babel-polyfill',
-      resolve(__dirname, '../server/koa')
+      path.resolve(__dirname, '../server/koa')
     ]
   },
 
   output: {
-    path: resolve(__dirname, '../server'),
-    filename: 'build.js',
-    libraryTarget: 'commonjs2'
-  },
-
-  devServer: {
-    outputPath: resolve(__dirname, '../server')
+    path: path.resolve(__dirname, '../dist'),
+    filename: 'server.js',
+    libraryTarget: 'commonjs2',
+    publicPath: '/assets/',
+    pathinfo: true
   },
 
   node: {
     console: true,
-    devtool: 'source-map'
+    __filaname: true,
+    __dirname: true,
+    fs: true,
+    path: true
   },
+
+  module: { loaders },
 
   plugins: [
     new webpack.BannerPlugin({
       banner: 'require("source-map-support").install();',
       raw: true,
       entryOnly: false
+    }),
+
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(NODE_ENV),
+        BROWSER: JSON.stringify(false)
+      }
     })
-  ]
+  ],
+
+  postcss,
+  resolve
 }
