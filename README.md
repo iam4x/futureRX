@@ -4,6 +4,8 @@
 
 [![dependencies](https://david-dm.org/iam4x/futureRX.svg)](https://david-dm.org/iam4x/futureRX#info=dependencies&view=table)
 [![devDependencies](https://david-dm.org/iam4x/futureRX/dev-status.svg)](https://david-dm.org/iam4x/futureRX#info=devDependencies&view=table)
+[![codecov](https://codecov.io/gh/iam4x/futureRX/branch/master/graph/badge.svg)](https://codecov.io/gh/iam4x/futureRX)
+
 
 WARNING: This is a proof of concept running on bleeding edge libraries, it has not been running in production yet. If you do [contact me](http://twitter.com/iam4x).
 
@@ -36,7 +38,17 @@ This project aim frontend applications which are using an external API to work w
   * #### server side rendering
     * [koa ^2.0.0](http://koajs.com/)
 
-  * #### tools
+  * #### testing tools
+    * [ava ^0.15.2](https://github.com/sindresorhus/ava)
+    * [jsdom ^9.4.0](https://github.com/tmpvar/jsdom)
+    * [enzyme ^2.3.0](https://github.com/airbnb/enzyme)
+    * [chai-enzyme ^0.5.0](https://github.com/producthunt/chai-enzyme)
+    * [faux-jax ^5.0.1](https://github.com/algolia/faux-jax)
+    * [sinon ^1.17.4](https://github.com/sinonjs/sinon)
+    * [sinon-chai ^2.8.0](https://github.com/domenic/sinon-chai)
+    * [nyc ^7.0.0-alpha.5](https://github.com/bcoe/nyc)
+
+  * #### dev/building tools
     * [webpack ^2.1.0-beta.15](http://webpack.github.io/)
     * [webpack-hot-middleware](https://github.com/glenjamin/webpack-hot-middleware)
     * [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware)

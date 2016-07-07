@@ -9,5 +9,5 @@ dist
 .env
 .c9
 .nyc_output
-lcov.info
 server/build.js
+coverage.lcov

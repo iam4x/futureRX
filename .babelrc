@@ -4,5 +4,13 @@
     "typecheck",
     "react-hot-loader/babel",
     "lodash"
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        [ "webpack-loaders", { "config": "${CONFIG}" } ],
+        [ "resolver", { "resolveDirs": [ "./" ] } ]
+      ]
+    }
+  }
 }

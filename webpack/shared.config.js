@@ -35,14 +35,8 @@ export default {
           'postcss'
         ]
       },
-      {
-        test: /global\.css$/,
-        loader: 'style!css!postcss'
-      },
-      {
-        test: /\.md$/,
-        loader: 'raw'
-      }
+      { test: /global\.css$/, loader: 'style!css!postcss' },
+      { test: /\.md$/, loader: 'raw' }
     ]
   },
 
