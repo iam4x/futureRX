@@ -4,7 +4,8 @@
 
 [![dependencies](https://david-dm.org/iam4x/futureRX.svg)](https://david-dm.org/iam4x/futureRX#info=dependencies&view=table)
 [![devDependencies](https://david-dm.org/iam4x/futureRX/dev-status.svg)](https://david-dm.org/iam4x/futureRX#info=devDependencies&view=table)
-[![codecov](https://codecov.io/gh/iam4x/futureRX/branch/master/graph/badge.svg)](https://codecov.io/gh/iam4x/futureRX)
+[![CircleCI](https://img.shields.io/circleci/project/iam4x/futureRX.svg)](https://circleci.com/gh/iam4x/futureRX)
+[![codecov](https://img.shields.io/codecov/c/github/iam4x/futureRX.svg)](https://codecov.io/gh/iam4x/futureRX)
 
 
 WARNING: This is a proof of concept running on bleeding edge libraries, it has not been running in production yet. If you do [contact me](http://twitter.com/iam4x).
