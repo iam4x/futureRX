@@ -24,7 +24,7 @@ export default {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,
-        loader: `file?name=[path][name]_${BUILD_HASH}.[ext]!image?optimizationLevel=7&progressive&interlaced`
+        loader: `file?name=[path][name]_${BUILD_HASH}.[ext]!image-webpack?optimizationLevel=7&progressive&interlaced`
       },
       {
         test: /\.css$/,
