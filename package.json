@@ -8,7 +8,10 @@
     "dev": "node run/dev",
     "ava": "CONFIG=$(pwd)/webpack/test.config.babel.js BABEL_DISABLE_CACHE=1 NODE_ENV=test ava spec/**/*.spec.js",
     "test": "nyc npm run ava",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t 8bba035a-a292-4daa-b6d4-68acc439495f"
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t 8bba035a-a292-4daa-b6d4-68acc439495f",
+    "build:client": "BABEL_ENV=production webpack --config ./webpack/client.config.babel.js",
+    "build:server": "BABEL_ENV=production webpack --config ./webpack/server.config.babel.js",
+    "build": "npm run build:client && npm run build:server"
   },
   "author": "iam4x",
   "license": "ISC",
