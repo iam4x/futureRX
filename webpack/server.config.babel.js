@@ -7,8 +7,6 @@ const {
   module: { loaders }
 } = require('./shared.config')
 
-const { NODE_ENV = 'development' } = process.env
-
 export default {
   target: 'node',
   devtool: 'source-map',
@@ -35,6 +33,9 @@ export default {
 
   node: {
     console: true,
+    global: true,
+    process: true,
+    Buffer: true,
     __filaname: true,
     __dirname: true,
     fs: true,
@@ -48,13 +49,6 @@ export default {
       banner: 'require("source-map-support").install();',
       raw: true,
       entryOnly: false
-    }),
-
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(NODE_ENV),
-        BROWSER: JSON.stringify(false)
-      }
     })
   ],
 
