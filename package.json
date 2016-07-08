@@ -7,7 +7,7 @@
     "lint": "eslint . --ext .jsx,.js",
     "dev": "node run/dev",
     "ava": "CONFIG=$(pwd)/webpack/test.config.babel.js BABEL_DISABLE_CACHE=1 NODE_ENV=test ava spec/**/*.spec.js",
-    "test": "nyc npm run ava",
+    "test": "nyc --all -r lcov -r text npm run ava",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t 8bba035a-a292-4daa-b6d4-68acc439495f"
   },
   "author": "iam4x",
@@ -24,15 +24,20 @@
   },
   "nyc": {
     "extension": [
-      ".jsx",
-      ".js"
+      ".jsx"
     ],
     "exclude": [
-      "spec/",
-      "webpack/",
-      "node_modules/",
-      "dist/"
-    ]
+      "spec/**",
+      "webpack/**",
+      "dist/**",
+      "run/**"
+    ],
+    "require": [
+      "babel-register",
+      "babel-polyfill"
+    ],
+    "sourceMap": false,
+    "instrument": false
   },
   "dependencies": {
     "autoprefixer": "^6.3.6",
@@ -87,6 +92,7 @@
   },
   "devDependencies": {
     "ava": "^0.15.2",
+    "babel-plugin-istanbul": "^1.0.2",
     "babel-plugin-resolver": "0.0.7",
     "babel-plugin-webpack-loaders": "^0.7.0",
     "browser-sync": "^2.13.0",
