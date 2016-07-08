@@ -14,6 +14,8 @@ const { NODE_ENV } = process.env
 
 const app = new Koa()
 
+debug.enable('koa')
+
 // Proxy asset folder to webpack development server in development mode
 if (NODE_ENV === 'development') {
   const proxy = require('koa-proxy')({
