@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint . --ext .jsx,.js",
     "dev": "node run/dev",
+    "pretest": "rm -rf coverage/ .nyc_output/",
     "test": "BABEL_DISABLE_CACHE=1 CONFIG=$(pwd)/webpack/shared.config.babel.js NODE_ENV=test nyc --all ava",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t 8bba035a-a292-4daa-b6d4-68acc439495f"
   },
@@ -21,18 +22,18 @@
       "./spec/helpers/setup-browser-env"
     ],
     "files": [
-      "spec/**/*.spec.js"
+      "spec/**"
     ]
   },
   "nyc": {
     "extension": [
-      ".jsx"
+      ".jsx",
+      ".js"
     ],
     "exclude": [
-      "spec/**",
-      "webpack/**",
-      "dist/**",
-      "run/**"
+      "spec/**/*.js",
+      "webpack/**/*.js",
+      "dist/**/*.js"
     ],
     "require": [
       "babel-register",
