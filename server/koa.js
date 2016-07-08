@@ -30,13 +30,13 @@ app.use(async (ctx) => {
   try {
     ctx.status = 200
     ctx.body = await render({
-      assets: require('./webpack-stats.json'),
+      // assets: require('./webpack-stats.json'),
       store: createStore(),
       location: ctx.request.url
     })
 
     // Don't cache assets name on dev
-    if (NODE_ENV === 'development') {
+    if (NODE_ENV === 'development' || NODE_ENV === 'test') {
       delete require.cache[require.resolve('./webpack-stats.json')]
     }
   } catch (err) {
