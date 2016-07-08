@@ -6,8 +6,7 @@
   "scripts": {
     "lint": "eslint . --ext .jsx,.js",
     "dev": "node run/dev",
-    "ava": "CONFIG=$(pwd)/webpack/test.config.babel.js BABEL_DISABLE_CACHE=1 NODE_ENV=test ava spec/**/*.spec.js",
-    "test": "nyc --all -r lcov -r text npm run ava",
+    "test": "BABEL_DISABLE_CACHE=1 CONFIG=$(pwd)/webpack/shared.config.babel.js NODE_ENV=test nyc --all ava",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t 8bba035a-a292-4daa-b6d4-68acc439495f"
   },
   "author": "iam4x",
@@ -17,9 +16,12 @@
     "failFast": true,
     "verbose": true,
     "require": [
-      "./spec/helpers/setup-browser-env",
       "babel-register",
-      "babel-polyfill"
+      "babel-polyfill",
+      "./spec/helpers/setup-browser-env"
+    ],
+    "files": [
+      "spec/**/*.spec.js"
     ]
   },
   "nyc": {
@@ -35,6 +37,10 @@
     "require": [
       "babel-register",
       "babel-polyfill"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
     ],
     "sourceMap": false,
     "instrument": false
