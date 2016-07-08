@@ -3,7 +3,6 @@ import { exec, fork } from 'child_process'
 
 import debug from 'debug'
 import open from 'open'
-import { noop } from 'lodash'
 
 import browserSync from 'browser-sync'
 import watch from 'node-watch'
@@ -29,10 +28,13 @@ const startServer = async () => {
 
   // define `restartServer` function
   const restartServer = () => {
-    debug('dev')('restarting koa application')
-    serverReload = true
-    server.kill('SIGTERM')
-    startServer()
+    if (server) {
+      debug('dev')('restarting koa application')
+      serverReload = true
+      server.kill('SIGTERM')
+      server = null
+      startServer()
+    }
   }
 
   server = fork(resolve(__dirname, '../../dist/server.js'), { env })
@@ -50,17 +52,17 @@ const startServer = async () => {
       if (firstServerStart) {
         firstServerStart = false
         open(`http://localhost:${PORT + 2}`)
+
+        // watch for `rs` into console to restart server
+        process.stdin.setEncoding('utf8')
+        process.stdin.on('data', (data) => {
+          const parsedData = `${data}`.trim().toLowerCase()
+          if (parsedData === 'rs') restartServer()
+        })
+
+        // watch for `./server` changes and auto-reload server & browser
+        watch(resolve(__dirname, '../../server'), () => restartServer())
       }
-
-      // watch for `rs` into console to restart server
-      process.stdin.setEncoding('utf8')
-      process.stdin.on('data', (data) => {
-        const parsedData = `${data}`.trim().toLowerCase()
-        if (parsedData === 'rs') restartServer()
-      })
-
-      // watch for `./server` changes and auto-reload server & browser
-      watch(resolve(__dirname, '../../server'))
     }
   })
 }
