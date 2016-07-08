@@ -9,7 +9,8 @@
     "test": {
       "plugins": [
         [ "webpack-loaders", { "config": "${CONFIG}" } ],
-        [ "resolver", { "resolveDirs": [ "./" ] } ]
+        [ "resolver", { "resolveDirs": [ "./" ] } ],
+        [ "istanbul" ]
       ]
     }
   }
