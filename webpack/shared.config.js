@@ -1,7 +1,9 @@
 /* eslint max-len: 0 */
 import { resolve } from 'path'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 import {
+  DEV,
   JS_REGEX,
   EXCLUDE_REGEX,
   AUTOPREFIXER_BROWSERS
@@ -35,7 +37,10 @@ export default {
           'postcss'
         ]
       },
-      { test: /global\.css$/, loader: 'style!css!postcss' },
+      {
+        test: /global\.css$/,
+        loader: DEV ? 'style!css!postcss' : ExtractTextPlugin.extract('style', 'css!postcss')
+      },
       { test: /\.md$/, loader: 'raw' }
     ]
   },
