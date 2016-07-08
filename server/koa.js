@@ -16,6 +16,27 @@ const app = new Koa()
 
 debug.enable('koa')
 
+// production middlewares
+if (NODE_ENV !== 'development') {
+  app.use(convert(require('koa-compress')()))
+  app.use(convert(require('koa-html-minifier')({
+    caseSensitive: true,
+    collapseWhitespace: true,
+    collapseBooleanAttributes: true,
+    collapseInlineTagWhitespace: true,
+    decodeEntities: true,
+    minifyCSS: true,
+    minifyJS: true,
+    minifyURLs: true,
+    removeAttributeQuotes: true,
+    removeEmptyAttributes: true,
+    removeRedundantAttributes: true,
+    removeScriptTypeAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    useShortDoctype: true
+  })))
+}
+
 // Proxy asset folder to webpack development server in development mode
 if (NODE_ENV === 'development') {
   const proxy = require('koa-proxy')({
