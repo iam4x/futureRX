@@ -75,7 +75,7 @@ This project aim frontend applications which are using an external API to work w
 
   * ### build
     * `$ NODE_ENV=production npm run build`
-    * `$ NODE_ENV=production node server`
+    * `$ NODE_ENV=production node dist/server`
 
 ### TODO
 
