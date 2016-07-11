@@ -11,7 +11,7 @@
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t 8bba035a-a292-4daa-b6d4-68acc439495f",
     "build:client": "BABEL_ENV=production webpack --config ./webpack/client.config.babel.js",
     "build:server": "BABEL_ENV=production webpack --config ./webpack/server.config.babel.js",
-    "build": "npm run build:client && npm run build:server"
+    "build": "npm run build:server && npm run build:client"
   },
   "author": "iam4x",
   "license": "ISC",

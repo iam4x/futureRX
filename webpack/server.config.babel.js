@@ -1,3 +1,6 @@
+// set process.env.SERVER to true for `shared.config.babel.js`
+process.env.SERVER = true
+
 import path from 'path'
 import webpack from 'webpack'
 
