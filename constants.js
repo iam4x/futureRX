@@ -15,11 +15,4 @@ export const AUTOPREFIXER_BROWSERS = [
   'Safari >= 7.1'
 ]
 
-export const CLIENT_GLOBALS = {
-  'process.env': {
-    BROWSER: JSON.stringify(true),
-    NODE_ENV: JSON.stringify(NODE_ENV)
-  }
-}
-
-export const isDev = NODE_ENV === 'development'
+export const DEV = NODE_ENV === 'development'

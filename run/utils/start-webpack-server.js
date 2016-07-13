@@ -4,7 +4,7 @@ import Koa from 'koa'
 import convert from 'koa-convert'
 import webpack from 'webpack'
 
-import clientConfig from '../../webpack/client.config'
+import clientConfig from '../../webpack/client.config.babel'
 import { PORT } from '../../core/config'
 
 export default (afterBundle) => {

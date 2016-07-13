@@ -1,3 +1,6 @@
+// set process.env.SERVER to true for `shared.config.babel.js`
+process.env.SERVER = true
+
 import path from 'path'
 import webpack from 'webpack'
 
@@ -6,8 +9,6 @@ const {
   postcss,
   module: { loaders }
 } = require('./shared.config')
-
-const { NODE_ENV = 'development' } = process.env
 
 export default {
   target: 'node',
@@ -35,6 +36,9 @@ export default {
 
   node: {
     console: true,
+    global: true,
+    process: true,
+    Buffer: true,
     __filaname: true,
     __dirname: true,
     fs: true,
@@ -48,13 +52,6 @@ export default {
       banner: 'require("source-map-support").install();',
       raw: true,
       entryOnly: false
-    }),
-
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(NODE_ENV),
-        BROWSER: JSON.stringify(false)
-      }
     })
   ],
 

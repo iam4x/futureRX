@@ -75,14 +75,14 @@ This project aim frontend applications which are using an external API to work w
 
   * ### build
     * `$ NODE_ENV=production npm run build`
-    * `$ NODE_ENV=production node server`
+    * `$ NODE_ENV=production node dist/server`
 
 ### TODO
 
 * [x] allow override of listening ports via config ([7e9ae4a](https://github.com/iam4x/futureRX/commit/7e9ae4ac73fdd562fed5d39dda9325b4541217af))
 * [x] styles with css-modules and global styles ([#1](https://github.com/iam4x/futureRX/pull/1))
 * [x] test with ava and airbnb-enzyme ([#2](https://github.com/iam4x/futureRX/pull/2))
-* [ ] webpack build config
+* [x] webpack build config
 * [ ] production server optimization
 * [ ] refactor server code
 

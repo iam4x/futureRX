@@ -1,13 +1,17 @@
 /* eslint max-len: 0 */
 import { resolve } from 'path'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 import {
+  DEV,
   JS_REGEX,
   EXCLUDE_REGEX,
   AUTOPREFIXER_BROWSERS
 } from '../constants'
 
-const { BUILD_HASH = 'DEFAULT' } = process.env
+const { BUILD_HASH = 'DEFAULT', SERVER } = process.env
+
+const clean = (arr) => arr.filter(i => i !== false)
 
 export default {
   module: {
@@ -24,7 +28,11 @@ export default {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,
-        loader: `file?name=[path][name]_${BUILD_HASH}.[ext]!image-webpack?optimizationLevel=7&progressive&interlaced`
+        loaders: clean([
+          `file?name=[path][name]_${BUILD_HASH}.[ext]`,
+          // optimize image for production client build
+          !DEV && !SERVER && 'image-webpack?optimizationLevel=7&progressive&interlaced'
+        ])
       },
       {
         test: /\.css$/,
@@ -35,7 +43,10 @@ export default {
           'postcss'
         ]
       },
-      { test: /global\.css$/, loader: 'style!css!postcss' },
+      {
+        test: /global\.css$/,
+        loader: DEV ? 'style!css!postcss' : ExtractTextPlugin.extract('style', 'css!postcss')
+      },
       { test: /\.md$/, loader: 'raw' }
     ]
   },

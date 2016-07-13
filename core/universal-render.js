@@ -14,6 +14,11 @@ import { rehydrate, dehydrate } from './hydrate'
 const { NODE_ENV, BROWSER } = process.env
 
 export default async ({ store, location, assets } = {}) => {
+  const css = []
+  const insertCss = BROWSER ?
+    (styles) => styles._insertCss() :
+    (styles) => css.push(styles._getCss())
+
   if (BROWSER) {
     rehydrate(store)
 
@@ -24,8 +29,6 @@ export default async ({ store, location, assets } = {}) => {
       const { whyDidYouUpdate } = require('why-did-you-update')
       whyDidYouUpdate(React)
     }
-
-    const insertCss = (styles) => styles._insertCss()
 
     const App = (
       <Provider provide={ { store } }>
@@ -68,9 +71,6 @@ export default async ({ store, location, assets } = {}) => {
 
     await fetchData(store, renderProps)
     const appState = dehydrate(store)
-
-    const css = []
-    const insertCss = (styles) => css.push(styles._getCss())
 
     const body = renderToString(
       <Provider provide={ { store, insertCss } }>
