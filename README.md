@@ -59,7 +59,7 @@ This project aim frontend applications which are using an external API to work w
 
 ## Setup
 
-* `$ git clone https://github.com/iam4x/futureRX.git [myApp]`
+* `$ git clone -o upstream https://github.com/iam4x/futureRX.git [myApp]`
 * `$ cd [myApp] && npm install`
 
 ## Run
@@ -76,6 +76,12 @@ This project aim frontend applications which are using an external API to work w
   * ### build
     * `$ NODE_ENV=production npm run build`
     * `$ NODE_ENV=production node dist/server`
+
+## Update
+
+* `$ git fetch upstream`
+* `$ git merge upstream/master`
+* `$ npm install`
 
 ### TODO
 
