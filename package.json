@@ -105,7 +105,7 @@
     "codecov": "^1.0.1",
     "enzyme": "^2.3.0",
     "faux-jax": "^5.0.1",
-    "jsdom": "^9.4.0",
+    "jsdom": "^9.4.4",
     "koa-webpack-dev-middleware": "^1.2.1",
     "koa-webpack-hot-middleware": "^1.0.3",
     "mobx-react-devtools": "^4.2.0",
