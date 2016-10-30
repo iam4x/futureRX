@@ -114,7 +114,7 @@
     "open": "0.0.5",
     "sinon": "^1.17.4",
     "sinon-chai": "^2.8.0",
-    "source-map-support": "^0.4.1",
+    "source-map-support": "^0.4.6",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0",
     "why-did-you-update": "0.0.8"
