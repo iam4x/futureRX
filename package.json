@@ -110,7 +110,7 @@
     "koa-webpack-hot-middleware": "^1.0.3",
     "mobx-react-devtools": "^4.2.0",
     "node-watch": "^0.4.0",
-    "nyc": "^7.0.0-alpha.5",
+    "nyc": "^8.4.0",
     "open": "0.0.5",
     "sinon": "^1.17.4",
     "sinon-chai": "^2.8.0",
