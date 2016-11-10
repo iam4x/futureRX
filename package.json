@@ -81,7 +81,7 @@
     "pluralize": "^3.0.0",
     "postcss": "^5.1.0",
     "postcss-import": "8.1.0",
-    "postcss-loader": "^0.9.1",
+    "postcss-loader": "^1.1.1",
     "postcss-url": "^5.1.2",
     "precss": "^1.4.0",
     "raw-loader": "^0.5.1",
