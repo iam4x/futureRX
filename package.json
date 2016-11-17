@@ -95,7 +95,7 @@
     "webpack-node-externals": "^1.2.0"
   },
   "devDependencies": {
-    "ava": "^0.15.2",
+    "ava": "^0.17.0",
     "babel-plugin-resolver": "0.0.7",
     "babel-plugin-webpack-loaders": "^0.7.0",
     "browser-sync": "^2.13.0",
