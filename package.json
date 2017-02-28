@@ -97,7 +97,7 @@
   "devDependencies": {
     "ava": "^0.15.2",
     "babel-plugin-resolver": "0.0.7",
-    "babel-plugin-webpack-loaders": "^0.7.0",
+    "babel-plugin-webpack-loaders": "^0.9.0",
     "browser-sync": "^2.13.0",
     "browser-sync-webpack-plugin": "^1.0.3",
     "chai": "^3.5.0",
