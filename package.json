@@ -112,7 +112,7 @@
     "node-watch": "^0.4.0",
     "nyc": "^7.0.0-alpha.5",
     "open": "0.0.5",
-    "sinon": "^1.17.4",
+    "sinon": "^2.0.0",
     "sinon-chai": "^2.8.0",
     "source-map-support": "^0.4.1",
     "webpack-dev-middleware": "^1.6.1",
